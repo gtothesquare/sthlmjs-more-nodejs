@@ -1,0 +1,310 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <title>Node.js beyond web apps - Geries Handal</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=792, user-scalable=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="bower_components/shower-ribbon/styles/screen.css">
+</head>
+<body class="list">
+<header class="caption">
+  <h1>Node.js beyond web apps</h1>
+  <p>Yours Truly, Geries Handal @gtothesquare</p>
+</header>
+<section class="slide cover" id="Cover"><div>
+  <h2>Node.js beyond web apps</h2>
+  <p>Brought to you by <a href="http://geries.me">Geries Handal</a></p>
+
+  <!--
+    To apply styles to the certain slides
+    set slide ID to get needed elements
+    -->
+  <style>
+    #Cover h2 {
+      margin:30px 0 0;
+      color:#FFF;
+      text-align:center;
+      font-size:70px;
+    }
+    #Cover p {
+      margin:10px 0 0;
+      text-align:center;
+      color:#FFF;
+      font-style:italic;
+      font-size:20px;
+    }
+    #Cover p a {
+      color:#FFF;
+    }
+
+  </style>
+</div></section>
+<section class="slide"><div>
+  <h3>What is this talk about?</h3>
+  <h2>Beyond the web: REST, Ajax and HTTP</h2>
+  <footer class="notes">
+
+  </footer>
+
+</div></section>
+<section class="slide cover" id="videoplaza"><div>
+  <img src="pictures/VP%20Vertical%20Payoff%20RGB.png" width="600"> <style>
+  #videoplaza {
+    background-color: #ffffff;
+  }
+  #videoplaza img {
+    margin-left: 200px;
+  }
+</style>
+  <footer class="notes">
+  Work at Videoplaza for the Ad Player team as a software engineering.
+  </footer>
+
+</div></section>
+
+<section class="slide"><div>
+  <h2>Node.js Realm - I/O bound programs</h2>
+ <ul>
+   <li>Test, build and CLI</li>
+   <li>Distributed services and IPC</li>
+   <li>monitoring and dashboards</li>
+   <li>Realtime services and apps</li>
+   <li>Internet of things</li>
+ </ul>
+  <footer class="notes">
+    IPC = inter-process communication with zeromq or redis
+  </footer>
+
+</div></section>
+
+<section class="slide"><div>
+  <h2>Design Principles</h2>
+  <p>build scalable network programs</p>
+  <p>event driven, non-blocking I/O</p>
+  <p>callbacks</p>
+
+  <footer class="notes">
+    The goal is to build scalable network programs, and you do this by just using callbacks when you are doing I/O,
+    that way you guarantee non-blocking I/O.
+  </footer>
+
+</div></section>
+<section class="slide" id="event-loop"><div>
+  <h2>The Event Loop</h2>
+  <img width="700" src="pictures/eventloop.png">
+  <p class="note">source: "Node.js the right way" by Jim M. Wilson</p>
+
+  <footer class="notes">
+    Simplification: First node goes through the javascript code in the load or setup phase. If there is something wrong
+    then it will throw an exception and exit. If all good, then will enter the event loop
+  </footer>
+  <style>
+    #event-loop .note {
+      font-size:14px ;
+    }
+  </style>
+</div></section>
+<section class="slide shout">
+  <div>
+    <h2>CLI</h2>
+  </div>
+</section>
+<section class="slide"><div>
+  <h2>Fundamentals</h2>
+  <ol>
+    <li>she bang: <code>#!/usr/bin/env node</code>
+    <ul>
+      <li><code>./myscript.js</code></li>
+    </ul>
+    </li>
+    <li>Argument Vector: <code>(process.argv)</code></li>
+    <li>Exit the Unix way:
+    <ul>
+      <li><code>process.exit(0);</code></li>
+      <li><code>process.exit(1);</code></li>
+    </ul>
+    </li>
+  </ol>
+  <p class="note">more at <a href="http://dailyjs.com/2012/03/01/unix-node-arguments/">Daily.js: Unix Node Arguments</a></p>
+  <footer class="notes">
+
+    Unix and Unix-like systems use a convention that a non-zero exit status from a program is an error.
+  </footer>
+  <style>
+    .slide code {
+      background: #EEEEEE;
+    }
+  </style>
+</div></section>
+<section class="slide"><div>
+  <h2>Modules</h2>
+  <ul>
+    <li><a href="https://github.com/visionmedia/commander.js/">commander.js</a> - cli framework</li>
+    <li><a href="https://github.com/visionmedia/node-progress">node-progress</a> - ascii progress bar</li>
+    <li><a href="https://github.com/LearnBoost/cli-table>node-progress">cli-table</a> - Pretty unicode tables</li>
+  </ul>
+  <footer class="notes">
+  This are some modules to help parse arguments, print help menus, pretty tables and progress bars.
+  </footer>
+</div></section>
+<section class="slide shout">
+  <div>
+    <h2>Proxies</h2>
+  </div>
+</section>
+<section class="slide">
+  <div>
+    <h2>Usage</h2>
+    <ol>
+      <li>JSON - think CouchDB, MongoDB and Postgres > 9.2 (JSON)</li>
+      <li>Backend Services</li>
+      <li>Frontend Proxy</li>
+      <li>Router</li>
+    </ol>
+    <footer class="notes">
+      Proxy to different services, route work to a queue, 
+
+    </footer>
+  </div>
+</section>
+<section class="slide" id="new-frontend">
+  <div>
+    <img src="pictures/new-frontend.png" />
+    <p class="note">source: http://www.nczonline.net/blog/2013/10/07/node-js-and-the-new-web-front-end/</p>
+
+  <footer class="notes">
+    Before - left diagram : frontend was rendered in the server: php, rails, etc.
+    After - right diagram : frontend proxy server, talks to the backend can do what ever they want and frontend can
+    write api and services that satisfy their new requirements: realtime, single page and consume other services.
+
+  </footer>
+  <style>
+    #new-frontend .note {
+      font-size: 14px;
+    }
+  </style>
+  </div>
+  </section>
+<section class="slide"><div>
+  <h2>Modules</h2>
+  <ul>
+    <li>HAPI</li>
+    <li>restify</li>
+    <li>Express.js</li>
+    <li>connect.js</li>
+    <li>MVC - Sails</li>
+  </ul>
+
+  <footer class="notes">
+    HAPI - not that popular, but is proven, it is actively supported and battle tested by Walmart
+    Regarding sails, the cool thing is that you can define your models and controles with their command tool
+    and automatically you will have a rest API. So, in case you will like to create something fast
+    that deals with routing, your welcome to use it.
+  </footer>
+</div></section>
+<section class="slide">
+  <div>
+      <h2>For more info, check Strongloop blog:</h2>
+      <p><a href="http://strongloop.com/strongblog/compare-express-restify-hapi-loopback/">Comparing Express, Hapi, Restify and loopback</a></p>
+
+  </div>
+</section>
+<section class="slide shout">
+  <div>
+    <h2>Realtime and Streaming</h2>
+    <footer class="notes">
+      Node is great for this because of nonblocking I/O
+      reactive: changes from any client immediately appear on everyone's screen.
+    </footer>
+  </div>
+</section>
+<section class="slide">
+  <div>
+    <h2>Realtime</h2>
+    <ol>
+      <li>Web Sockets - engine.io, socket.io, etc </li>
+      <li>Dashboards</li>
+      <li>Monitoring</li>
+    </ol>
+    <footer class="notes">
+      Node is great for this because of nonblocking I/O
+      reactive: changes from any client immediately appear on everyone's screen.
+
+    </footer>
+  </div>
+</section>
+<section class="slide">
+  <div>
+    <h2>More on Websockets</h2>
+    <p><a href="https://medium.com/node-js-javascript/b63bfca0539">Finding the right Node.js WebSocket implementation</a></p>
+  </div>
+</section>
+<section class="slide shout">
+  <div>
+    <h2>Internet of things</h2>
+  </div>
+</section>
+<section class="slide">
+  <div>
+    <h2>Internet of things</h2>
+    <ul>
+      <li><a href="http://nodered.org/">Node RED - A visual tool for wiring the Internet of Things</a></li>
+      <li><a href="http://devicejs.org/">Device.js Javascript for the Physical World (WigWag project)</a></li>
+
+    </ul>
+    <footer class="notes">
+      A couple of projects using node in the realm of Internet of Things:
+      Node-RED provides a browser-based flow editor that makes it easy to wire together flows using the wide range
+      nodes in the palette. Flows can be then deployed to the runtime.
+      Device.js source will be release when WigWag products are shipped. Wigwag, which Interconnect smart devices & services.
+    </footer>
+  </div>
+</section>
+<section class="slide shout">
+  <div>
+    <h2>Desktop Apps - node-webkit</h2>
+  </div>
+</section>
+</section><section class="slide">
+  <div>
+    <h2>General stuff</h2>
+    <p>If you invest in a technology, then invest in people.</p>
+    <p>Don't use Node for hard computations.. if you must, then queue.(e.g ZeroMQ)</p>
+    <p>Remember the <a href="http://blog.izs.me/post/48281998870/unix-philosophy-and-node-js">unix way.</a></p>
+  </div>
+</section>
+<section class="slide shout">
+  <div>
+    <h2>Thanks - Questions?</h2>
+
+  </div>
+</section>
+<section class="slide">
+  <div>
+    <h2>References and resources</h2>
+    <ul>
+      <li>http://dailyjs.com/2012/03/01/unix-node-arguments/</li>
+      <li>http://www.toptal.com/nodejs/why-the-hell-would-i-use-node-js</li>
+      <li>http://stackoverflow.com/questions/3491811/node-js-and-cpu-intensive-requests</li>
+      <li>http://blog.izs.me/post/48281998870/unix-philosophy-and-node-js</li>
+      <li>http://dailyjs.com/2012/02/09/unix-node/</li>
+      <li>http://strongloop.com/strongblog/node-js-event-loop/</li>
+      <li>http://blog.mixu.net/2011/02/01/understanding-the-node-js-event-loop/</li>
+      <li>http://blog.mixu.net/2011/02/01/understanding-the-node-js-event-loop/</li>
+      <li>https://medium.com/tech-talk/cbb67f28358f</li>
+      <li>http://www.joyent.com/blog/walmart-node-js-memory-leak</li>
+      <li>http://cjihrig.com/blog/scaling-node-js-applications/</li>
+    </ul>
+  </div>
+</section>
+
+<!--<p class="badge"><a href="https://github.com/shower/shower">Fork me on Github</a></p>
+
+  To hide progress bar from entire presentation
+  just remove “progress” element.
+
+<div class="progress"><div></div></div>-->
+<script src="bower_components/shower-core/shower.min.js"></script>
+</body>
+</html>
